@@ -11,17 +11,15 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="flex h-screen w-full  bg-gray-100 overflow-scroll flex-col relative">
+    <div className="flex h-fit w-full  bg-gray-800 flex-col relative">
       {/* Main Area */}
       <div className="flex-1 flex flex-col">
-
         {/* Dashboard Content */}
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 md:p-4 p-1">
           <h1 className="text-2xl font-bold mb-6">Overview</h1>
-
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <div className="bg-white p-6 rounded-xl shadow-md">
+            <div className="bg-white p-6 rounded-xl shadow-md w-full">
               <h2 className="text-lg font-semibold"><FiUsers />Employees</h2>
               <p className="text-3xl font-bold mt-2">25</p>
             </div>

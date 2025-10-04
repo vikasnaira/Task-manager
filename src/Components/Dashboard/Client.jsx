@@ -22,7 +22,7 @@ const EmployeeDashboard = () => {
   };
 
   return (
-    <div className="flex h-screen w-full bg-gray-100">
+    <div className="flex h-screen w-full  bg-gray-600 ">
       {/* Sidebar */}
       <div className="w-64 bg-white shadow-lg flex flex-col p-6">
         <div className="flex items-center gap-3 mb-6">
@@ -71,7 +71,7 @@ const EmployeeDashboard = () => {
         </div>
 
         {/* Task List */}
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 w-full p-6">
           <h1 className="text-2xl font-bold mb-6">My Tasks</h1>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
