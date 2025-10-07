@@ -27,7 +27,8 @@ const Login = () => {
     }
   }
   return (
-    <div className='login h-screen w-full flex items-center justify-center p-10  bg-center bg-no-repeat bg-cover'>
+    <div className='login h-screen w-full flex items-center justify-center p-10  bg-center bg-no-repeat bg-cover' 
+    style={{backgroundImage:"url('./LoginBg.jpg')"}}>
       <div className=" text-bklack   gap-7 w-[20rem] p-4  border-1 border-black md:bg-gray-500/20 flex flex-col backdrop-blur-sm items-center py-10 rounded-lg shadow-md shadow-black hover:shadow-lg  transition-linear  duration-250">
       <h1 className='text-3xl font-bold my-5 xl:text-[2vw]'>LOGIN HERE</h1>
       <input type="text" value={name} onChange={(e)=>setname(e.target.value)} placeholder='enter your id'  className='border-1 placeholder:text-black w-[70%] text-sm border-black lg:placeholder:text-sm  rounded-lg p-2'  />
