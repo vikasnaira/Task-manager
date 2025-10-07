@@ -14,3 +14,6 @@ h2{
 .overview:nth-child(1){
    background-color: red;
 }
+.login{
+   background-image: url("./LoginBg.jpg");
+}
