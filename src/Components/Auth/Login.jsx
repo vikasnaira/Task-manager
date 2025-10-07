@@ -1,39 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-
+import { setLocalStorage } from '../utils/LocalStorage';
+import { getLocalStorage } from '../utils/LocalStorage';
 const Login = () => {
     const navigate = useNavigate();
-    const [name, setname] = useState("")
-    const [password, setPassword ] = useState("")
-    const [emp, setemp] = useState([
-     { name: "vikas",  password:  "1234"},
-     { name: "sachin", password : "1234"},
-     { name: "krish",  password : "1234"},
-     { name: "suraj",  password : "1234"},
-     { name: "deepak", password : "1234"},
-      ]);
-  const [boss, setboss] = useState([
-  { name: "boss1", password: "1234"},
-  { name: "boss2", password: "1234"}
-])
-      const check = ()=>{
-        if(boss.some((item)=> item.name === name && item.password === password)){
+    setLocalStorage();
+    const data = getLocalStorage();
+
+    const [name, setname] = useState(null)
+    const [password, setPassword ] = useState(null)
+
+  const  handlelogin =  ()=>{
+    if(!name || !password){
+      alert("Please fill in all fields.");
+      return;
+    }
+    const user = data.users.find((user) => user.name === name && user.password === password);
+    if (user) {
+      if (user.role === 'admin') {
         navigate('/boss');
-      }
-      else{
-      if(emp.some((item)=> item.name === name && item.password === password)){
+      } else if (user.role === 'client') {
         navigate('/client');
       }
-      else{
-        if(name === "" || password === ""){
-          alert("Please fill in all fields.");
-        }else{
-          alert("Invalid credentials, please try again.");
-        }
-      }
-      }
-      }
+    } else {
+      alert("Invalid credentials, please try again.");
+    }
+  }
   return (
     <div className='h-screen w-full flex items-center justify-center p-10  bg-[url("https://i.pinimg.com/1200x/99/e0/3e/99e03ecb9cfd89ef633081123879a9d8.jpg")] bg-center bg-no-repeat bg-contain'>
       <div className="login text-bklack h-[80vh] md:min-w-1/4  md:w-[50%] xl:gap-10 lg:w-[30%] w-full  p-4 gap-5 border-1 border-black bg-gray-500/50 flex flex-col backdrop-blur-sm items-center py-10 rounded-lg shadow-md shadow-black hover:shadow-lg  transition-linear  duration-250">
@@ -45,8 +37,7 @@ const Login = () => {
       <input type="checkbox" name="remind" id="remind" />
      </div>
       <div className="button flex gap-3 w-[70%] justify-center">
-      <button className='bg-sky-600 w-fit py-1 px-2  rounded-full text-sm lg:text-[1.3vw]' onClick={check} >Login in</button>
-      <button className='bg-sky-600 w-fit py-1 px-2 rounded-full text-sm lg:text-[1.3vw]'>sign up </button>
+      <button className='bg-sky-600 w-fit py-1 px-2  rounded-full text-sm lg:text-[1.3vw]' onClick={handlelogin} >Login in</button>
       </div>
       <a href="#" className='text-blue-900 text-sm h-fit font-sans underline'>forget password</a>
       </div>

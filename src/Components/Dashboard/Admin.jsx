@@ -1,18 +1,21 @@
 import { FaTasks, FaUsers, FaChartPie } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
-import AdminDashboard from "../Dashboard";
 import TaskOverview from "../Others/TaskOverview";
+import AdminDashboard from "../Others/Dashboard";
 import EmployeesLIst from "../Others/EmployeesLIst";
 import Navbar from "../Others/Navbar";
 import { useClick } from "../../context/ClickContext";
 import Task from "../Others/Task";
+import { useNavigate } from "react-router-dom";
+import Login from "../Auth/Login";
 export default function TaskManagerBossUI() {
+  const navigate =  useNavigate();
   const { click, setClick } = useClick();
 
   return (
-    <div className="flex bg-red-500">
+    <div className="flex bg-gray-200 min-w-full  w-fit">
       {/* Sidebar */}
-      <aside className="w-64 bg-blue-900 text-white  flex-col relative md:flex hidden"> 
+      <aside className="w-64 bg-blue-900 text-white h-screen flex-col relative md:flex hidden"> 
         <h1 className="text-2xl font-bold p-4">Admin Panel</h1>
         <nav className="flex flex-col gap-4 p-4">
           <button
@@ -34,7 +37,7 @@ export default function TaskManagerBossUI() {
             <FaTasks /> Tasks Overview
           </button>
         </nav>
-          <button className="absolute bottom-10 left-3 px-3 py-2 hover:bg-blue-700 rounded flex items-center gap-3 justify-items-start w-[14rem]"> <FiLogOut /> Logout</button>
+          <button className="absolute bottom-10 left-3 px-3 py-2 hover:bg-blue-700 rounded flex items-center gap-3 justify-items-start w-[14rem]" onClick={() => {navigate("/login")}}> <FiLogOut /> Logout</button>
       </aside>
 
       {/* Main Content */}
