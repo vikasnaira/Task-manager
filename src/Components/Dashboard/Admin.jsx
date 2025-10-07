@@ -7,7 +7,7 @@ import Navbar from "../Others/Navbar";
 import { useClick } from "../../context/ClickContext";
 import Task from "../Others/Task";
 import { useNavigate } from "react-router-dom";
-import Login from "../Auth/Login";
+import AddEmp from "../Others/AddEmp";
 export default function TaskManagerBossUI() {
   const navigate =  useNavigate();
   const { click, setClick } = useClick();
@@ -60,6 +60,9 @@ export default function TaskManagerBossUI() {
           )}
           {click === 4 && (
             <Task/>
+          )}
+          {click === 5 &&(
+            <AddEmp/>
           )}
         </main>
       </div>

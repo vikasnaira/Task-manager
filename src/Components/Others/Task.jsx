@@ -36,7 +36,6 @@ const Task = () => {
     const userIndex = data.users.findIndex((u) => u.name === selectedUser);
     if (userIndex === -1) return alert("Selected user not found!");
 
-    // ✅ Create task object
     const newTask = {
       id: Date.now(),
       title: projectName,
