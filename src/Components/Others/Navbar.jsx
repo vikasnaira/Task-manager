@@ -7,7 +7,7 @@ const Navbar = () => {
   const { click, setClick } = useClick();
 
   return (
-    <header className="flex flex-wrap md:flex-nowrap justify-between items-center bg-white p-4 shadow gap-3">
+    <header className="flex flex-wrap md:flex-nowrap justify-between items-center p-4 shadow gap-3">
       {/* Left: Search */}
       <div className="flex items-center gap-2 w-full md:w-auto">
         <Search className="text-gray-500 hidden sm:block" />
@@ -19,7 +19,7 @@ const Navbar = () => {
       </div>
 
       {/* Right: Buttons */}
-      <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
+      <div className="flex items-center gap-3 w-full md:w-auto  justify-between md:justify-end">
         <button
           className="bg-blue-500 text-white px-3 py-2 rounded-3xl flex items-center gap-2 text-sm sm:text-base whitespace-nowrap"
           onClick={() => setClick(4)}

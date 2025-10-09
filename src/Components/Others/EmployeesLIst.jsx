@@ -3,7 +3,7 @@
   import { getLocalStorage, setLocalStorage } from "../utils/LocalStorage";
   import { Plus } from 'lucide-react'
   import { useClick } from '../../context/ClickContext';
-import AddEmp from './AddEmp';
+  import AddEmp from './AddEmp';
 
   setLocalStorage();
   const data = getLocalStorage();

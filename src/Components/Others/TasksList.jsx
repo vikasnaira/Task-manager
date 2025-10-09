@@ -14,7 +14,7 @@ const TasksList = () => {
     <div>
        {/* Task List */}
         <div className="task card w-full  p-4">
-          <h1 className="text-2xl font-bold mb-6">My Tasks</h1>
+          <h1 className="text-2xl font-bold mb-6">Tasks Overview</h1>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {tasks.map(task => (
@@ -29,13 +29,11 @@ const TasksList = () => {
 
                 <div className="flex gap-2 mt-auto">
                   <button
-                    onClick={() => updateStatus(task.id, "In Progress")}
                     className="px-3 py-1 rounded-xl border border-gray-300 hover:bg-gray-200"
                   >
                     In Progress
                   </button>
                   <button
-                    onClick={() => updateStatus(task.id, "Completed")}
                     className="px-3 py-1 rounded-xl bg-blue-600 text-white hover:bg-blue-700"
                   >
                     Complete
