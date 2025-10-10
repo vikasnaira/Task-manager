@@ -62,7 +62,7 @@ const EmployeeDashboard = () => {
               setIsSidebarOpen(false);
             }}
           >
-            Report
+          Help & Report
           </button>
         </div>
 
@@ -87,7 +87,7 @@ const EmployeeDashboard = () => {
         {/* Navbar */}
         <nav className="flex md:items-center gap-2 md:justify-between w-full shadow md:px-6 px-2  py-4 bg-white">
           <div
-            className="md:hidden text-2xl cursor-pointer"
+            className="md:hidden text-2xl cursor-pointer  py-2 px-1"
             onClick={toggleSidebar}
           >
             <CiMenuFries />
@@ -100,7 +100,7 @@ const EmployeeDashboard = () => {
               className="bg-transparent outline-none"
             />
           </div>
-          <div className="flex items-center gap-2 text-gray-600">
+          <div className="flex items-center gap-2  text-gray-600">
             <FiBell className="text-xl cursor-pointer hover:text-black" />
             <FiSettings className="text-xl cursor-pointer hover:text-black" />
           </div>
