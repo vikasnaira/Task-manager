@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { setLocalStorage } from '../utils/LocalStorage';
 import { getLocalStorage } from '../utils/LocalStorage';
+import { useEffect } from 'react';
 const Login = () => {
     const navigate = useNavigate();
     setLocalStorage();
@@ -9,14 +10,29 @@ const Login = () => {
 
     const [name, setname] = useState(null)
     const [password, setPassword ] = useState(null)
+    const [Loading, setLoading] = useState(true)
 
+    useEffect(() => {
+    const img = new Image();
+    img.src = '/LoginBg.jpg'; 
+
+    img.onload = () => {
+    setLoading(false);
+    };
+  }, []);
+    
   const  handlelogin =  ()=>{
+
     if(!name || !password){
       alert("Please fill in all fields.");
       return;
     }
     const user = data.users.find((user) => user.name === name && user.password === password);
+  
     if (user) {
+
+      localStorage.setItem("current client", JSON.stringify(user));   
+         
       if (user.role === 'admin') {
         navigate('/boss');
       } else if (user.role === 'client') {
@@ -27,8 +43,9 @@ const Login = () => {
     }
   }
   return (
-    <div className='login h-screen w-full flex items-center justify-center p-10  bg-center bg-no-repeat bg-cover' 
-    style={{backgroundImage:"url('./LoginBg.jpg')"}}>
+   <>
+      {Loading? (<div className='bg-black/10 flex items-center h-screen text-3xl justify-center'>Loading...</div>):( <div className='login h-screen w-full flex items-center justify-center p-10  bg-center bg-no-repeat bg-cover' 
+      style={{backgroundImage:`url('./LoginBg.jpg')`}}>
       <div className=" text-bklack   gap-7 w-[20rem] p-4  border-1 border-black md:bg-gray-500/20 flex flex-col backdrop-blur-sm items-center py-10 rounded-lg shadow-md shadow-black hover:shadow-lg  transition-linear  duration-250">
       <h1 className='text-3xl font-bold my-5 xl:text-[2vw]'>LOGIN HERE</h1>
       <input type="text" value={name} onChange={(e)=>setname(e.target.value)} placeholder='enter your id'  className='border-1 placeholder:text-black w-[70%] text-sm border-black lg:placeholder:text-sm  rounded-lg p-2'  />
@@ -42,7 +59,8 @@ const Login = () => {
      </div>
       <a href="#" className="text-sm  font-sans underline text-white'>forget password">forget password</a>
       </div>
-    </div>
+    </div>)}
+      </>
   )
 }
 

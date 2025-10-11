@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import Loginpage from './Components/Auth/Login';
-import Client from './Components/Dashboard/Client';
-import TaskManagerBossUI from './Components/Dashboard/Admin';
+import Client from './Components/Dashboard/client/Client';
+import TaskManagerBossUI from './Components/Dashboard/Admin/Admin';
 import { useEffect } from 'react';
 import { getLocalStorage, setLocalStorage } from './Components/utils/LocalStorage';
 const App = () => {
-  
-   useEffect(() => {
+         
+   useEffect(() => {  
     // setLocalStorage();
    getLocalStorage();
    const data = getLocalStorage();

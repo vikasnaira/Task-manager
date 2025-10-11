@@ -1,9 +1,19 @@
 import React from "react";
 import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+  const finalUser = JSON.parse(localStorage.getItem("current client"));
+const navigate = useNavigate();
+  const dataErase =()=>{
+    navigate('/login')
+    localStorage.clear();
+
+  }
+
   return (
-    <div className="bg-gray-100 flex flex-col gap-4 p-5 h-[88vh]">
+    <div className="bg-gray-100 flex flex-col gap-4 p-5 h-[88vh] overflow-scroll">
+      <button className="bg-blue-500 w-fit px-3 py-1 text-white rounded-2xl" onClick={dataErase}>Erase all data</button>
       <h1 className="font-bold text-3xl  sticky top-0 bg-gray-100 z-10">
         Profile
       </h1>
@@ -24,8 +34,8 @@ const Profile = () => {
 
         {/* Middle Section - Info */}
         <div className="flex flex-col md:w-1/2 gap-2">
-          <h1 className="text-3xl font-semibold text-gray-800">Vikas Naira</h1>
-          <p className="text-xl text-gray-500">Frontend Developer</p>
+          <h1 className="text-3xl font-semibold text-gray-800">{finalUser.name}</h1>
+          <p className="text-xl text-gray-500">{finalUser.position}</p>
 
           <div className="mt-4">
             <p className="text-gray-500 text-lg mb-1">Social</p>
@@ -49,9 +59,9 @@ const Profile = () => {
         {/* for Details */}
         <div className="flex flex-col gap-2 text-gray-700 md:w-1/3 bg-gray-50 rounded-xl p-4 shadow-inner">
           {[
-            { label: "Name", value: "Mr. Vikas" },
-            { label: "Role", value: "Frontend Developer" },
-            { label: "Email", value: "vikasnaira1322@gmail.com" },
+            { label: "Name", value: `${finalUser.name}` },
+            { label: "Role", value: `${finalUser.position}` },
+            { label: "Email", value: `${finalUser.email}` },
             { label: "Experience", value: "3 Years" },
             { label: "Phone", value: "+91 8198947026" },
           ].map((item, i) => (
@@ -92,7 +102,7 @@ const Profile = () => {
             Additional Info
           </h2>
           <p className="text-gray-500 leading-relaxed">
-            Vikas is a dedicated Frontend Developer with a strong background in
+            {finalUser.name} is a dedicated Frontend Developer with a strong background in
             React, Tailwind, and UI design. He’s passionate about building clean
             and responsive interfaces, and actively contributes to team
             projects.

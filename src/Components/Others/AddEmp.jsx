@@ -50,10 +50,13 @@ const AddEmp = () => {
     <div className="fixed inset-0 h-screen w-full bg-black/30 flex justify-center items-center">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-5 relative w-1/2 h-[70%] overflow-scroll bg-white p-10 rounded-2xl"
+        className="flex flex-col gap-5 relative md:w-1/2  h-[70%] overflow-scroll bg-white px-10  rounded-2xl"
       >
-         <button className="absolute top-4 text-2xl right-4" onClick={()=>{setClick(2)}}>✕</button>
-        <h2 className="text-2xl font-bold mb-4">Add Employee</h2>
+        <div className="sticky top-0 p-4  bg-white  flex justify-between items-start ">
+        <h2 className="text-2xl font-bold mb-4  sticky top-0">Add Employee</h2>
+           <button className=" text-2xl "  onClick={()=>{setClick(2)}}>✕</button>
+        </div>
+        
 
         {/* Name */}
         <div className="flex flex-col">
@@ -67,8 +70,7 @@ const AddEmp = () => {
             className="w-full border-2 border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-
-        {/* Password + Email */}
+{/* email data */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="flex flex-col">
             <label className="font-medium text-sm mb-1">Password</label>
@@ -94,7 +96,30 @@ const AddEmp = () => {
           </div>
         </div>
 
-        {/* ✅ Gender Selection */}
+    {/* contact and role */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+         <div className="flex flex-col">
+            <label className="font-medium text-sm mb-1">Contact</label>
+            <input
+              type="tel"
+              defaultValue={"+91"}
+              required
+              maxLength={10}
+              name="password"
+              placeholder="Enter Contact"
+              className="border-2 border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="font-medium text-sm mb-1">Role</label>
+            <input
+              type="text"
+              name="role"
+              placeholder="Enter Role"
+              className="border-2 border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+      </div>
         <div className="flex flex-col">
           <label className="font-medium text-sm mb-1">Gender</label>
           <div className="flex items-center gap-5 p-2">
@@ -135,7 +160,7 @@ const AddEmp = () => {
         <div className="w-full flex justify-end">
           <button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg mt-4 transition"
+            className="bg-blue-600 m-3 hover:bg-blue-700 text-white px-6 py-2 rounded-lg mt-4 transition"
           >
             Add Employee
           </button>

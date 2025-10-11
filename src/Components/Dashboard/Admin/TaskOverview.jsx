@@ -1,13 +1,13 @@
 import React from 'react'
-import { getLocalStorage, setLocalStorage } from "../utils/LocalStorage";
+import { getLocalStorage, setLocalStorage } from "../../utils/LocalStorage";
 setLocalStorage();
 const data = getLocalStorage();
 const clients = data.users.filter((u) => u.role === "client");
 
-const EmployeesLIst = () => {
+const TaskOverview = () => {
   return (
-    <div className='overflow-y-scroll h-[80vh] p-3 '>
-          <h2 className="text-2xl font-bold mb-4 sticky top-0 z-99 bg-gray-200 p-2 rounded-2xl">Task overview</h2>
+    <div className='overflow-y-scroll h-[80vh]'>
+          <h2 className="text-2xl font-bold  sticky top-0 z-9 bg-gray-200 p-2">Task overview</h2>
          {clients.map((client)=>(
            <div className='bg-white rounded-2xl mb-2 py-3 px-3 h-fit items-center justify-between shadow-lg'>         
             <h1 className='text-xl font-semibold  w-fit'>{client.name.toUpperCase()}</h1>
@@ -27,5 +27,5 @@ const EmployeesLIst = () => {
   )
 }
 
-export default EmployeesLIst
+export default TaskOverview
  

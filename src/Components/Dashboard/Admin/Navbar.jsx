@@ -1,15 +1,24 @@
 import React from "react";
-import Task from "../Others/Task";
+import Task from "./Task";
 import { Bell, Search, Plus } from "lucide-react";
-import { useClick } from "../../context/ClickContext";
+import { useClick } from "../../../context/ClickContext";
+import { CiMenuFries } from "react-icons/ci";
 
-const Navbar = () => {
+const Navbar = ({ toggleSidebar }) => {
   const { click, setClick } = useClick();
 
   return (
-    <header className="flex flex-wrap md:flex-nowrap justify-between items-center p-4 shadow gap-3">
-      {/* Left: Search */}
+    <header className="flex flex-wrap md:flex-nowrap justify-between items-center p-4 shadow gap-3 bg-white">
+      {/* Left: Search + Menu */}
       <div className="flex items-center gap-2 w-full md:w-auto">
+        {/* Menu Button for small screens */}
+        <button
+          className="text-2xl md:hidden block"
+          onClick={toggleSidebar}
+        >
+          <CiMenuFries />
+        </button>
+
         <Search className="text-gray-500 hidden sm:block" />
         <input
           type="text"
@@ -19,7 +28,7 @@ const Navbar = () => {
       </div>
 
       {/* Right: Buttons */}
-      <div className="flex items-center gap-3 w-full md:w-auto  justify-between md:justify-end">
+      <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
         <button
           className="bg-blue-500 text-white px-3 py-2 rounded-3xl flex items-center gap-2 text-sm sm:text-base whitespace-nowrap"
           onClick={() => setClick(4)}
@@ -27,7 +36,7 @@ const Navbar = () => {
           Add Task <Plus size={18} />
         </button>
 
-        {click == 4 && <Task />}
+        {click === 4 && <Task />}
 
         <Bell className="text-gray-600 cursor-pointer hidden sm:block" />
         <img

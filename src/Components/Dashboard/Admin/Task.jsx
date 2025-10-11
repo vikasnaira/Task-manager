@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useClick } from "../../context/ClickContext";
-import { getLocalStorage, setLocalStorage } from "../utils/LocalStorage";
+import { useClick } from "../../../context/ClickContext";
+import { getLocalStorage, setLocalStorage } from "../../utils/LocalStorage";
 
 const Task = () => {
   const { setClick } = useClick();
@@ -12,7 +12,6 @@ const Task = () => {
   const [priority, setPriority] = useState("medium");
 
   useEffect(() => {
-    // initialize data only once
     setLocalStorage();
     const data = getLocalStorage();
 
@@ -47,18 +46,15 @@ const Task = () => {
       priority
     };
 
-    // ✅ Add to selected user
     data.users[userIndex].tasks.push(newTask);
 
-    // ✅ Save updated data
     localStorage.setItem("taskManagerData", JSON.stringify(data));
 
     console.log("✅ Task Added:", newTask);
     alert(`Task assigned to ${selectedUser} successfully!`);
 
-    setClick(1); // close modal
+    setClick(1); 
 
-    // ✅ Reset form
     setProjectName("");
     setDescription("");
     setSelectedUser("");

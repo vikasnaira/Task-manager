@@ -27,7 +27,7 @@ const ReportSection = () => {
 
   return (
     <div className="p-6 flex flex-col gap-6 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold">Submit Task Report</h1>
+      <h1 className="text-3xl font-bold sticky top-0 bg-gray-100">Submit Task Report</h1>
 
       {/* Report Form */}
       <form

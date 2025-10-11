@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { FiLogOut, FiSettings, FiBell, FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import TasksList from "../Others/TasksList";
-import { useClick } from "../../context/ClickContext";
-import Profile from "../Others/Profile";
-import Report from "../Others/Report";
 import { CiMenuFries } from "react-icons/ci";
+import { useClick } from "../../../context/ClickContext";
+import TasksList from "./TasksList";
+import Profile from "./Profile";
+import Report from "./Report";
 
 const EmployeeDashboard = () => {
   const navigate = useNavigate();
   const { click, setClick } = useClick(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // 👈 NEW STATE
-
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  
+  const finalUser = JSON.parse(localStorage.getItem("current client"));
+  
   const logout = () => {
     navigate("/login");
   };
@@ -21,7 +23,7 @@ const EmployeeDashboard = () => {
   };
 
   return (
-    <div className="flex max-w-screen h-screen overflow-hidden bg-gray-200 relative">
+    <div className="flex max-w-screen overflow-hidden bg-gray-200 h-screen relative">
       {/* Sidebar */}
       <div
         className={`fixed md:static top-0 left-0 h-full w-60 bg-white shadow-lg flex-col p-6 
@@ -31,7 +33,7 @@ const EmployeeDashboard = () => {
         <div className="flex items-center gap-3 mb-6">
           <div className="w-12 h-12 rounded-full bg-gray-300" />
           <div>
-            <h2 className="font-semibold">Vikas Kumar</h2>
+            <h2 className="font-semibold">{finalUser.name}</h2>
             <p className="text-sm text-gray-500">Employee</p>
           </div>
         </div>
